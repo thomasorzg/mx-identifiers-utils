@@ -1,11 +1,12 @@
 {
   "name": "mx-identifiers-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple library to validate and format Mexican identifiers like CURP, RFC, and others.",
   "main": "main.js",
   "author": "LT Soluciones Tecnológicas",
   "website": "https://ltsoluciones.com.mx",
   "license": "MIT",
+  "types": "types/mx-identifiers-utils.d.ts",
   "scripts": {
     "test": "jest"
   },
