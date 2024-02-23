@@ -6,26 +6,26 @@ const { internalConsonant, internalVowel } = require('./extensions/stringExtensi
 const filtrar = require('./utils/filtrar');
 
 /**
- * 
- * @param {*} nombres 
- * @param {*} paterno 
- * @param {*} materno 
- * @param {*} sexo 
- * @param {*} fechaNacimiento 
- * @param {*} estadoEnumValue 
- * @returns 
+ * Genera una CURP basada en los datos proporcionados.
+ * @param {string} nombres Los nombres de la persona.
+ * @param {string} paterno El apellido paterno de la persona.
+ * @param {string} materno El apellido materno de la persona.
+ * @param {string} sexo El sexo de la persona ('H' para hombre, 'M' para mujer).
+ * @param {moment.Moment} fechaNacimiento La fecha de nacimiento de la persona (objeto Moment).
+ * @param {string} estadoEnumValue El estado de nacimiento de la persona (valor del enum Estado).
+ * @returns {string} La CURP generada.
  */
 const generarCURP = (nombres, paterno, materno, sexo, fechaNacimiento, estadoEnumValue) => {
     // Aplicar filtros
     let nombreTemp = filtrar(nombres);
     let paternoTemp = filtrar(paterno);
     let maternoTemp = filtrar(materno);
-
+    
     // Posiciones 1-4
     let uno = paternoTemp[0] === 'Ñ' ? 'X' : paternoTemp[0];
     let dos = internalVowel(paternoTemp, 1) ?? 'X';
     let tres = (maternoTemp && maternoTemp[0] === 'Ñ') ? 'X' : (maternoTemp ? maternoTemp[0] : 'X'); // Manejo de materno vacío
-    let cuatro = nombreTemp[0] == 'Ñ' ? 'X' : nombreTemp[0];
+    let cuatro = nombreTemp[0] === 'Ñ' ? 'X' : nombreTemp[0];
 
     // Fecha de nacimiento
     let fechaNacFormat = moment(fechaNacimiento);
@@ -60,9 +60,9 @@ const generarCURP = (nombres, paterno, materno, sexo, fechaNacimiento, estadoEnu
 };
 
 /**
- * 
- * @param {*} preCURP 
- * @returns 
+ * Calcula el dígito verificador de la CURP.
+ * @param {string} preCURP La parte inicial de la CURP.
+ * @returns {string} El dígito verificador calculado.
  */
 const calcularCodigoVerificador = (preCURP) => {
     const caracteres = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";

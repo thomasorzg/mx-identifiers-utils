@@ -1,8 +1,8 @@
 /**
- * 
- * @param {*} str 
- * @param {*} number 
- * @returns 
+ * Encuentra la primera consonante interna en el string dado.
+ * @param {*} str El string en el que se buscará la consonante interna.
+ * @param {*} number El número de la consonante interna que se desea encontrar.
+ * @returns La consonante interna encontrada o null si no se encuentra.
  */
 const internalConsonant = (str, number) => {
   const consonantRegex = /[bcdfghjklmnñpqrstvwxyz]/i;
@@ -10,16 +10,15 @@ const internalConsonant = (str, number) => {
 };
 
 /**
- * 
- * @param {*} str 
- * @param {*} number 
- * @returns 
+ * Encuentra la primera vocal interna en el string dado.
+ * @param {*} str El string en el que se buscará la vocal interna.
+ * @param {*} number El número de la vocal interna que se desea encontrar.
+ * @returns La vocal interna encontrada o null si no se encuentra.
  */
 const internalVowel = (str, number) => {
   const vowelRegex = /[aeiou]/i;
   return findInternalChar(str, number, vowelRegex);
 };
-
 
 /**
  * 
